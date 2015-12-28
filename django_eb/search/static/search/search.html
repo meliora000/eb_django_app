@@ -1,0 +1,91 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+<head>
+<meta charset="utf-8">
+<link href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css" type="text/css" rel="stylesheet" >
+<link rel="stylesheet" type="text/css" href="{% static 'css/search/style1.css' %}" />
+<script src="{% static 'script/jquery-1.7.2.min.js' %}"  type="text/javascript"></script>
+<script src="{% static 'script/search.js' %}"  type="text/javascript"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAeVvTxCA083Jv1gQCvlGyC3nNLramjVU&signed_in=true&callback=initMap"
+        async defer></script>
+<title>SEARCH</title>
+</head>
+<body>
+<!-- Codrops top bar -->
+            <div class="codrops-top">
+                <a href="http://tympanus.net/codrops/2012/01/02/fullscreen-background-image-slideshow-with-css3/">
+                    <strong>Thanks Mary Lou</strong>
+                </a>
+                <span class="right">
+                    <a href="#login" target="_blank"><strong>Login</strong></a>
+                    <a href="#favorite">
+                        <strong>Favorite</strong>
+                    </a>
+                    <p class="winsize">
+                    this is win size
+                    </p>
+                </span>
+                <div class="clr"></div>
+            </div><!--/ Codrops top bar -->
+            
+            <div id="map">
+            </div>
+            <div id="recommend">
+					{% for x in info %}
+                    <div id="box">
+                    <ul id ="lists">
+                	<li>
+                    	<div id="list">
+                    	<table width="280px">
+                        	<colgroup>
+                            	<col width="33%"><col width="33%"><col width="33%">
+                            </colgroup>
+                            <tr class="title" >
+                            	<td height="40" colspan="3">
+                                	{{ x.name }}<br>
+									<p>{{x.address}}</p><p class="latlng">{{x.lat}},{{x.lng}}</p>
+                                </td>
+                            </tr>
+                            <tr class="rate">
+                            	<td height="31">{{taste}}</td>
+                                <td>{{distance}}</td>
+                                <td>{{price}}</td>
+                          </tr>
+                            <tr class="comment">
+                            	<td colspan="3">
+                                	이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇
+                                    이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇
+                                    이렇단다이렇단다이렇단다이렇단다asdasdasdasdd다이렇단다이렇asdasdasdasdasdasdasdasdd다이렇단다이렇asdasdasdasdasdasdasdasdd다이렇단다이렇asdasdasdasdasdasdasdasdd다이렇단다이렇asdasdasdasdasdasdasdasdd다이렇단다이렇asdasdasdasdasdasdasdasdd다이렇단다이렇asdasdasdasdasdasdasdasdd다이렇단다이렇asdasdasdasdasdasdasdasdd다이렇단다이렇asdasdasdasdasdasdd단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇단다이렇
+                                </td>
+                            </tr>
+                        </table>
+                        </div>
+                        
+                        <div class="menus">
+                        <button class="a"><img src="{% static 'img/love.png' %}"></button>
+                        <button class="b"><img src="{% static 'img/loc.png' %}"></button>
+                        <button class="c" ><img src="{% static 'img/FB-f-Logo__white_72.png' %}"></button>                        
+                        <button class="d"><img src="{% static 'img/katalk.png' %}"></button>
+                        <button class="e"><img src="{% static 'img/write.png' %}"></button>                      
+                      </div> <!--menus END-->
+                      
+                	</li>
+                    <li class = "write">
+                    	<h3>This is another section asjdlkasjkdl</h3>
+                        <!--"{% static 'img/left.png' %}"-->
+                        <button class="left"><img src="{% static 'img/left.png' %}"></button>
+                    </li>
+				</ul>
+                </div>
+                	{% endfor %}
+            	
+				<div id="memo">
+					{{ memo }}
+				</div>
+                <p class="addAndloc">
+                    {{ address }}
+				</p>
+            </div>
+</body>
+</html>
