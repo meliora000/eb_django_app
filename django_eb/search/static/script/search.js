@@ -2,6 +2,10 @@ var map;
 var des;
 var myLatLng;
 function initMap() {
+    var windowchange = 0;
+	$(window).resize(function(){
+        $(".text").text($(this).width() + "<>" + $(this).height())
+	});
 function nullanimate(){
 	for(i=0; i<markers.length;i++){
 		markers[i].setAnimation(null)
