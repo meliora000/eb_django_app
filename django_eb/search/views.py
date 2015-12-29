@@ -11,11 +11,10 @@ def index(request):
         request.session['address'] = request.POST['address']
         return HttpResponseRedirect('/search/')
 
-    return render(request,"home.html")
+    return render(request,"search/home.html")
 
 def search(request):
     print 'SEARCH'
-    t = loader.get_template('search.html')
     try:
         address =  request.session['address']
     except KeyError:
@@ -25,8 +24,10 @@ def search(request):
     add = " ".join(address[:-2])
     lat = float(address[-2])
     lng = float(address[-1])
+    add="address"
     fulladdress = "{0},{1},{2}".format(add,lat,lng)
-    dis = .003
+
+    dis = .004
     MINlat = lat - dis
     MAXlat = lat + dis
     MINlng = lng - dis
@@ -39,18 +40,19 @@ def search(request):
 
 
     for i in qs:
-        data = {}
-        data['name'] = i.name
-        data['lat'] = str(i.lat)
-        data['lng'] = str(i.lng)
-        data['address'] = i.add
-        info.append(data)
-        fullinfo = i.name+"-"+str(i.lat - .00011)+"-"+str(i.lng + .00005)
-        memo.append(fullinfo)
+        if((i.lat - lat)**2 + (i.lng - lng)**2 <= dis**2):
+            data = {}
+            data['name'] = i.name
+            data['lat'] = str(i.lat)
+            data['lng'] = str(i.lng)
+            data['address'] = i.add
+            info.append(data)
+            fullinfo = i.name+"-"+str(i.lat)+"-"+str(i.lng)
+            memo.append(fullinfo)
     memo = ",".join(memo)
     info = {'info':info,'memo':memo,"address":fulladdress}
 
-    return render(request,'search.html',info)
+    return render(request,'search/search.html',info)
 
 def map(request):
     return HttpResponse("test for daum map")
