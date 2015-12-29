@@ -90,26 +90,45 @@ a{
 	color: #f8f8f8;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
 }
-.container form{position:relative;text-align:left; padding-left:20px}
-.container form input[type=text]{
+#headhead form{position:relative;text-align:left; padding-left:20px}
+#headhead form input[type=text]{
 	border:1px solid rgba(225,49,52,.3);
 	outline:0;
 	border-radius:10px 0px 0px 10px;padding:5px 10px; width:200px; height:15px; background-color:rgba(225,49,52,0.7);
 	margin: 0px 0 10px 20px;
 	color:#FFFFFF;	
 }
-.container form input[type=submit]{
+#headhead form input[type=submit]{
 	position:absolute;
 	top:0px;
 	width:27px;
 	height:27px;
 	border-radius:0 10px 10px 0;
-	border:none;
 	background:url(http://joseph92.dothome.co.kr/portfolio/img/tree.png);
 	background-size:23px 23px;
 	background-repeat:no-repeat;
 	background-color:rgba(225,49,52,0.7);	
 }
+#loginpage{background-color:#FFFFFF; height:0px; width:0px; position:fixed; top:20px; right:0px;opacity:.9;border-radius:10px;}
+#loginpage form{
+	width:220px;
+	margin:0 auto;
+	padding-top:10px;}
+#loginpage form input{
+	font-size:18px;	
+}
+#loginpage form input[type=text] ,input[type=password]{
+	border:0px;
+	border-radius:5px;
+    width:200px;
+    height:30px;
+	margin-top:10px;
+	-moz-box-shadow:    inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow:         inset 0 0 10px #000000;
+	padding:5px 10px;
+}
+
 #status{width:300px; height:300px;display:none}
 /* Header Style */
 .codrops-top{
@@ -198,7 +217,7 @@ p.codrops-demos a.current-demo:hover{
 	.container > header{
 		text-align: center;
 	}
-	.container form{width:260px; margin:0 auto; position:relative; left:-30px;}
+	#headhead form{width:260px; margin:0 auto; position:relative; left:-30px;}
 	p.codrops-demos {
 		position: relative;
 		top: auto;

@@ -1,5 +1,10 @@
 function initMap() {
 	//Create Default Map
+	$('.login').toggle(function(){
+	    $('#loginpage').animate({height:'200px',width:'280px'},300);
+	},function(){
+	     $('#loginpage').animate({height:'0px',width:'0px'},300);
+	});
 	var map = new google.maps.Map(document.getElementById('status'), {
 		center: {lat: -34.397, lng: 150.644},
 		zoom: 17,

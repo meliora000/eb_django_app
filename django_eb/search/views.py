@@ -6,11 +6,14 @@ from .models import Object
 def index(request):
     if request.method == 'POST':
         print 'HOME: POST'
-
         #Saved Address
-        request.session['address'] = request.POST['address']
-        return HttpResponseRedirect('/search/')
-
+        if 'login' in request.POST:
+            print 'login'
+        if 'signup' in request.POST:
+            print 'signup'
+        if 'gotosearch' in request.POST:
+            request.session['address'] = request.POST['address']
+            return HttpResponseRedirect('/search/')
     return render(request,"search/home.html")
 
 def search(request):
