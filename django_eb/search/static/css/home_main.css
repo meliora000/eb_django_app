@@ -129,6 +129,19 @@ a{
 	padding:5px 10px;
 }
 
+#loginpage form input[type=submit]{
+    border-radius:5px;
+    width:80px;
+    margin-top:10px;
+    float:left;
+}
+#loginpage form input[type=button]{
+    border-radius:5px;
+    width:80px;
+    margin-top:10px;
+    float:right;
+}
+
 #status{width:300px; height:300px;display:none}
 /* Header Style */
 .codrops-top{

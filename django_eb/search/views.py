@@ -2,19 +2,18 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render
 from django.template import loader,Context
 from .models import Object
+from .forms import LoginFrom
+import json
 
 def index(request):
     if request.method == 'POST':
         print 'HOME: POST'
         #Saved Address
-        if 'login' in request.POST:
-            print 'login'
-        if 'signup' in request.POST:
-            print 'signup'
         if 'gotosearch' in request.POST:
             request.session['address'] = request.POST['address']
             return HttpResponseRedirect('/search/')
-    return render(request,"search/home.html")
+    form = LoginFrom
+    return render(request,"search/home.html",{'form':form})
 
 def search(request):
     print 'SEARCH'
@@ -59,3 +58,14 @@ def search(request):
 
 def map(request):
     return HttpResponse("test for daum map")
+
+def login(request):
+   if request.method == 'POST':
+        form = LoginFrom(request.POST)
+        if form.is_valid():
+            user = {}
+            user['id'] = form.cleaned_data['login_id']
+            user['password'] = form.cleaned_data['login_password']
+            return HttpResponse(json.dumps({'message':user}),content_type="application/json")
+        else:
+            return HttpResponse(json.dumps({'message':"loigin failed" }),content_type="application/json")
