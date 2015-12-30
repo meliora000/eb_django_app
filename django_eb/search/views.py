@@ -29,7 +29,7 @@ def search(request):
     add="address"
     fulladdress = "{0},{1},{2}".format(add,lat,lng)
 
-    dis = .004
+    dis = .0038
     MINlat = lat - dis
     MAXlat = lat + dis
     MINlng = lng - dis

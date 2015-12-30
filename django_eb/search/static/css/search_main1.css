@@ -1,4 +1,4 @@
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
 	margin:0;
 	padding:0;
 }
@@ -10,7 +10,7 @@ table {
 	border-collapse:collapse;
 	border-spacing:0;
 }
-fieldset,img { 
+fieldset,img {
 	border:0;
 }
 input{
@@ -97,17 +97,17 @@ a{
 }
 
 #map{
-	width:90%; height:300px; margin:0 auto; 
+	width:90%; height:300px; margin:0 auto;
 	margin-top:40px;
 	border-radius:25px;
 }
 
 #recommend{
-	width:1400px; height:650px; margin:0 auto;
+	margin:0 auto;
 	margin-top:20px;
 	}
 
-#box{width:320px;height:420px; float:left; margin-right:30px; margin-bottom:30px;overflow:hidden;}
+#box{width:320px;height:420px; float:left;margin-bottom:30px;overflow:hidden;margin-right:20px;}
 #recommend ul{width:640px; height:400px;position:relative; left:0;}
 #recommend li{
 	position:relative;
@@ -189,7 +189,7 @@ p.addAndloc{display:none}
 #memo{
 	display:none
 	}
-	
+
 @media screen and (max-width: 1200px) {
 	#recommend{
 		width:1050px; height:650px; margin:0 auto;

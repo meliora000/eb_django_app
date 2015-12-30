@@ -2,9 +2,19 @@ var map;
 var des;
 var myLatLng;
 function initMap() {
-    var windowchange = 0;
+    setTable();
+    function setTable(){
+    	winx = Math.floor($("#map").width()/320);
+    	$("#recommend").width(winx*320 + (winx-1) *(20));
+    	//s = "#box:nth-child("+wiwnx+"n+"+winx+")"
+		$('#box:nth-child(1n)').css({"margin-right":20})
+    	$("#box:nth-child("+winx+"n)").css({"margin-right":0})
+
+    }
 	$(window).resize(function(){
-        $(".text").text($(this).width() + "<>" + $(this).height())
+        $(".text").text($(this).width() + "< {} >" + $(this).height() + " :: >>" + winx)
+        setTable()
+		map.setCenter(myLatLng);
 	});
 function nullanimate(){
 	for(i=0; i<markers.length;i++){
@@ -16,6 +26,16 @@ $("button.e").click(function(){
 });
     $("button.b").click(function(){
     x = $(this).parent().parent().parent().parent().index();
+    latlng = $(this).parent().parent().find('.latlng').text().split(",")
+	coffeelat = parseFloat(latlng[0]);
+	coffeelng = parseFloat(latlng[1]);
+	coffeelat = Math.abs((coffeelat + myLatLng.lat)/2)
+	coffeelng = Math.abs((coffeelng + myLatLng.lng)/2)
+
+	map.setCenter({lat:coffeelat,lng:coffeelng})
+
+
+
     nullanimate();
     $('html, body').animate({
     	scrollTop:0},300);
