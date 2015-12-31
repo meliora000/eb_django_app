@@ -185,7 +185,6 @@ background: none;}
 .left img{height:30px; width:30px;}
 
 p{font-size:10px}
-p.addAndloc{display:none}
 #memo{
 	display:none
 	}
@@ -201,4 +200,13 @@ p.addAndloc{display:none}
 		width:700px; height:650px; margin:0 auto;
 		margin-top:20px;
 	}
+}
+
+.useridclass{
+	font-size:17px;	
+	margin-bottom-2px;
+}
+.commentclass{
+	font-size:13px;
+	margin-bottom:5px;
 }

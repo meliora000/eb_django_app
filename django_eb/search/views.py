@@ -4,6 +4,7 @@ from django.template import loader,Context
 from .models import Object
 from .forms import LoginFrom
 import json
+from comment.models import Comment
 
 def index(request):
     if request.method == 'POST':
@@ -43,11 +44,19 @@ def search(request):
 
     for i in qs:
         if((i.lat - lat)**2 + (i.lng - lng)**2 <= dis**2):
+            coffeeid = i.id
             data = {}
             data['name'] = i.name
             data['lat'] = str(i.lat)
             data['lng'] = str(i.lng)
             data['address'] = i.add
+            data['comments'] = []
+            for j in Comment.objects.filter(coffee = coffeeid):
+                commentdata = {}
+                commentdata['userID'] = j.user_id
+                commentdata['comment'] = j.comment
+                data['comments'].append(commentdata)
+
             info.append(data)
             fullinfo = i.name+"-"+str(i.lat)+"-"+str(i.lng)
             memo.append(fullinfo)

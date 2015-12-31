@@ -9,18 +9,24 @@ from django.db import models
 
 
 def login(request):
+    print 'user login'
     user = {}
+
+
     user['id'] = "login"
     user['password'] = "failed"
-    print 'users login'
     if request.method == 'POST':
         form = LoginFrom(request.POST)
         if form.is_valid():
             uid = form.cleaned_data['login_id']
-            upass = form.cleaned_data['login_password']
+            upass = int(form.cleaned_data['login_password'])
             try:
                 foo = USER.objects.get(userid = uid)
-                if foo.userpassword == upass:
+                realpass = int(foo.userpassword)
+                print type(upass)
+                print type(realpass)
+                if realpass == upass:
+                    print 'loginsuccess'
                     user['id'] = "welcome"
                     user['password'] = foo.name
                     return HttpResponse(json.dumps({'message':user }),content_type="application/json")
@@ -30,6 +36,8 @@ def login(request):
                     return HttpResponse(json.dumps({'message':user }),content_type="application/json")
             except USER.DoesNotExist:
                 print 'login failed'
+                user['id'] = "notexist"
+                user['password'] = "id"
                 return HttpResponse(json.dumps({'message':user }),content_type="application/json")
 
 

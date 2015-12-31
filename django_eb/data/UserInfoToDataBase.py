@@ -16,9 +16,10 @@ d = f.readlines()
 #integrate from TXT to DB
 tname = "users_user"
 for i in d:
+    print i
     i = i.strip()
     name,userid,password,add,phone = i.split(",")
-    query = "INSERT INTO {0} VALUES (null,'{1}','{2}',{3},{4})".format(name,userid,password,add,phone)
+    query = "INSERT INTO {0} VALUES (null,'{1}','{2}','{3}','{4}','{5}')".format(tname,name,userid,password,add,phone)
     c.execute(query)
 
 conn.commit()

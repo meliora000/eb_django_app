@@ -8,3 +8,5 @@ class Object(models.Model):
     lat = models.FloatField()
     lng = models.FloatField()
 
+class Obejct1(models.Model):
+    name = models.CharField(max_length=200)
