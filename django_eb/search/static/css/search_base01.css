@@ -41,7 +41,7 @@ abbr,acronym { border:0;
 /* General Demo Style */
 body{
 	font-family: 'Nanum Gothic', serif;
-	background: #000;
+	 background-image: url(../img/search_backgroundimg.png);
 	font-weight: 400;
 	font-size: 15px;
 	color: #aa3e03;
@@ -69,8 +69,7 @@ a{
 	line-height: 24px;
 	font-size: 11px;
 	width: 100%;
-	background: #000;
-	opacity: 0.9;
+	background: #4B3C36;
 	text-transform: uppercase;
 	z-index: 9999;
 	position: relative;
@@ -113,7 +112,7 @@ a{
 	position:relative;
 	width:300px;
 	height:400px;
-	color:#039; background-color:#900;  float:left; margin-bottom:20px;
+	color:#039; background-color:#4B3C36;  float:left; margin-bottom:20px;
 	padding:10px;
 	border-radius:10px 10px 0 0;
 	overflow:hidden;

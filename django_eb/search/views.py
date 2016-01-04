@@ -14,7 +14,7 @@ def index(request):
             request.session['address'] = request.POST['address']
             return HttpResponseRedirect('/search/')
     form = LoginFrom
-    return render(request,"search/home.html",{'form':form})
+    return render(request,"search/index.html",{'form':form})
 
 def search(request):
     print 'SEARCH'
