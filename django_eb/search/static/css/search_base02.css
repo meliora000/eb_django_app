@@ -117,8 +117,9 @@ a{
 	border-radius:10px 10px 0 0;
 	overflow:hidden;
 	}
-
+a{color:#FFF;}
 .title{color:#FFF; font-size:1.5em; font-weight:400}
+.duamMap{color:#FFF; font-size:1.3em; font-weight:300}
 .rate{color:#FFF; font-size:1em;}
 .comment{color:#FFF; font-size:12px;overflow:hidden;}
 
@@ -208,4 +209,11 @@ p{font-size:10px}
 .commentclass{
 	font-size:13px;
 	margin-bottom:5px;
+}
+
+.addAndloc{
+	display:none;
+}
+.latlng{
+	display:none;
 }

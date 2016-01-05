@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <link href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css" type="text/css" rel="stylesheet" >
-<link rel="stylesheet" type="text/css" href="{% static 'css/search_base01.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/search_base02.css' %}" />
 <title>SEARCH</title>
 </head>
 <body>
@@ -18,7 +18,6 @@
                     <a href="#favorite">
                         <strong>Favorite</strong>
                     </a>
-                    <p class="text">this is</p>
                 </span>
                 <div class="clr"></div>
             </div><!--/ Codrops top bar -->
@@ -38,7 +37,8 @@
                             <tr class="title" >
                             	<td height="40" colspan="3">
                                 	{{ x.name }}<br>
-									<p>{{x.address}}</p><p class="latlng">{{x.lat}},{{x.lng}}</p>
+                                    <p class="daumMap"><a href={{x.daummap}}>{{x.address}}</a></p>
+                                    <p class="latlng">{{x.lat}},{{x.lng}}</p>
                                 </td>
                             </tr>
                             <tr class="rate">

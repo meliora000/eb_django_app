@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>what</title>
+</head>
+<body>
+<h1>sign up</h1>
+
+<div id="signup">
+                <form action=""id="loginform" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <input type="submit" value="SUBMIT"/>
+
+                </form>
+            <!--<h3 class="message">STATUS</h3>-->
+            </div>
+
+        </div>
+</body>
+</html>

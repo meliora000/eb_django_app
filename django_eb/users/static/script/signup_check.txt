@@ -1,0 +1,5 @@
+ajax  if len(userid) > 8  and is valid ''(meaning no !@#%$^...):
+    check if userID is already exist
+
+ajax check if emailAddress is valid
+    check if email is already exist

@@ -2,11 +2,25 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render
 from django.template import loader,Context
 import json
-from .forms import LoginFrom
+from .forms import LoginFrom,SignUpForm
 from .models import USER
 from django.db import models
 # Create your views here.
 
+def signUp(request):
+    form = SignUpForm
+
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['signup_name']
+            email = form.cleaned_data['signup_email']
+            id = form.cleaned_data['signup_id']
+            password = form.cleaned_data['signup_password']
+            str = name + "<>" + email + "<>" + id + "<>" + password + "<>"
+            print str
+
+    return render(request,"users/signup.html",{'form':form})
 
 def login(request):
     print 'user login'

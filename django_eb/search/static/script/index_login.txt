@@ -1,0 +1,4 @@
+
+add userInterface by case
+is user press signup than direct to user/signup
+add login with facebook
