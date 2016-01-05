@@ -11,4 +11,6 @@ $('#loginform').submit(function(e){
 	     $('#loginpage').animate({height:'0px',width:'0px'},300);
 	});
 
-$
+$('#signup').click(function(){
+    window.location = '/user/signup'
+});
