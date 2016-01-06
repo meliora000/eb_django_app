@@ -62,7 +62,8 @@ def search(request):
             fullinfo = i.name+"-"+str(i.lat)+"-"+str(i.lng)
             memo.append(fullinfo)
     memo = ",".join(memo)
-    info = {'info':info,'memo':memo,"address":fulladdress}
+    form = LoginFrom
+    info = {'info':info,'memo':memo,"address":fulladdress,'form':form}
 
     return render(request,'search/search.html',info)
 

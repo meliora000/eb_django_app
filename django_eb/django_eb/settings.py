@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'search',
     'users',
     'comment',
+    'fav',
 ]
 
 MIDDLEWARE_CLASSES = [

@@ -24,42 +24,62 @@ def signUp(request):
 
 def login(request):
     print 'user login'
+    request.session['loginstatus'] = "needlogin"
+
     user = {}
 
+    user['status'] = "NONE"
+    user['id'] = "NONE"
+    user['password'] = "NONE"
 
-    user['id'] = "login"
-    user['password'] = "failed"
+
+
     if request.method == 'POST':
         form = LoginFrom(request.POST)
         if form.is_valid():
-            uid = form.cleaned_data['login_id']
-            upass = int(form.cleaned_data['login_password'])
+            inputId = form.cleaned_data['login_id']
+            inputPass = int(form.cleaned_data['login_password'])
+
             try:
-                foo = USER.objects.get(userid = uid)
-                realpass = int(foo.userpassword)
-                print type(upass)
-                print type(realpass)
-                if realpass == upass:
-                    print 'loginsuccess'
-                    user['id'] = "welcome"
+                foo = USER.objects.get(userid = inputId)
+                userPass = int(foo.userpassword)
+
+                if inputPass == userPass:
+                    print 'login'
+                    user['id'] = foo.userid
                     user['password'] = foo.name
-                    return HttpResponse(json.dumps({'message':user }),content_type="application/json")
+                    user['userName'] = foo.name
+                    user['status'] = 'login'
+
+                    request.session['loginstatus'] = "login"
+                    request.session['username'] = foo.name
+                    request.session['userid'] = foo.userid
+
+
                 else:
+                    print 'password'
                     user['id'] = "password"
                     user['password'] = "different"
-                    return HttpResponse(json.dumps({'message':user }),content_type="application/json")
+                    user['status'] = 'password'
+
+
             except USER.DoesNotExist:
-                print 'login failed'
+                print 'No ID'
                 user['id'] = "notexist"
                 user['password'] = "id"
-                return HttpResponse(json.dumps({'message':user }),content_type="application/json")
 
+    return HttpResponse(json.dumps({'message':user}),content_type="application/json")
 
+def status(request):
+    print 'get'
+    info = {}
+    info['status'] = request.session['loginstatus']
+    info['name'] = request.session['username']
+    info['id'] = request.session['userid']
+    return HttpResponse(json.dumps({'login':info}),content_type="application/json")
 
-
-
-
-
-            return HttpResponse(json.dumps({'message':user}),content_type="application/json")
-        else:
-            return HttpResponse(json.dumps({'message':user }),content_type="application/json")
+def logout(request):
+    request.session['loginstatus'] = "none"
+    request.session['username'] = "none"
+    request.session['userid'] = "none"
+    return HttpResponse("LOGOUT")
