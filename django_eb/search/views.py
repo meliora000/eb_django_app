@@ -51,6 +51,7 @@ def search(request):
             data['lng'] = str(i.lng)
             data['address'] = i.add
             data['daummap'] = "http://map.daum.net/link/to/" + "_".join(i.name.split(" ")) + "," + data['lat'] + "," + data['lng']
+            data['coffeeId'] = str(i.id)
             data['comments'] = []
             for j in Comment.objects.filter(coffee = coffeeid):
                 commentdata = {}

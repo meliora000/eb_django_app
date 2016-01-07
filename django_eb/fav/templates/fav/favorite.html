@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,5 +7,8 @@
 </head>
 <body>
 hello world
+{% for x in info %}
+    <h3>{{x.name}} <br> {{x.add}}</h3>
+{% endfor %}
 </body>
 </html>
