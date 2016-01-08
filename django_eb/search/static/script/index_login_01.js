@@ -35,7 +35,6 @@ function showLoginForm(){
 function login(){
 		hideLogin();
 		showLogout();
-		hideLoginForm();
 		showUsername();
 		loginstatus = "LOGIN"
 }
@@ -53,6 +52,7 @@ $('#loginform').submit(function(e){
 	       if(data.message.status == "password"){
 				alert("PASSWORD IS NOT RIGHT")
 	       }
+	       hideLoginForm();
        // of course you can do something more fancy with your respone
     });
     e.preventDefault();
