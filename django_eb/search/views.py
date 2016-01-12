@@ -2,7 +2,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render
 from django.template import loader,Context
 from .models import Object
-from .forms import LoginFrom
+from .forms import LoginFrom,CommentForm
 import json
 from comment.models import Comment
 
@@ -64,7 +64,8 @@ def search(request):
             memo.append(fullinfo)
     memo = ",".join(memo)
     form = LoginFrom
-    info = {'info':info,'memo':memo,"address":fulladdress,'form':form}
+    form2 = CommentForm
+    info = {'info':info,'memo':memo,"address":fulladdress,'form':form,'form2':form2}
 
     return render(request,'search/search.html',info)
 
