@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'users',
     'comment',
     'fav',
+    'rest',
 ]
 
 MIDDLEWARE_CLASSES = [

@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <link href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css" type="text/css" rel="stylesheet" >
-<link rel="stylesheet" type="text/css" href="{% static 'css/search_base08.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/search_base09.css' %}" />
 <title>SEARCH</title>
 </head>
 <body>
@@ -70,7 +70,10 @@
                       
                 	</li>
                     <li class = "write">
-                    	<form action="" id="signupform" method="post">
+
+
+                    	<form action="" class="postform" method="post">
+                            {% csrf_token %}
                             <div class="taste_box">
                              </div>
                             <div class="mood_box">                                           
@@ -84,8 +87,8 @@
                                 <h3 class="price">가격</h3>
                             </div>
 
-                            {%csrf_token%}
                             {{form2}}
+                            <input id="postcomment" type="submit" value="POST"/>
                         </form>
 
                         <!--"{% static 'img/left.png' %}"-->
@@ -117,7 +120,7 @@
 <script src="http://joseph92.dothome.co.kr/portfolio/script/jquery.js"  type="text/javascript"></script>
 <!--<script src="http://joseph92.dothome.co.kr/portfolio/script/search.js"  type="text/javascript"></script>-->
 <script src="{% static 'script/search02.js' %}"></script>
-<script src="{% static 'script/search_comment02.js' %}"></script>
+<script src="{% static 'script/search_comment04.js' %}"></script>
 <script src="{% static 'script/index_login_01.js' %}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAeVvTxCA083Jv1gQCvlGyC3nNLramjVU&signed_in=true&callback=initMap"
         async defer></script>

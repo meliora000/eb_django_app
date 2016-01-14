@@ -116,6 +116,7 @@ a{
 	padding:10px;
 	border-radius:10px 10px 0 0;
 	overflow:hidden;
+	left:-320px;
 	}
 a{color:#FFF;}
 .title{color:#FFF; font-size:1.5em; font-weight:400}

@@ -1,8 +1,7 @@
 from django.conf.urls import url
-
 from . import views
 
 urlpatterns = [
-    url(r'^favorite/$',views.index,name="login"),
-    url(r'^favorite/post/',views.fpost,name="addfavorite"),
+    url(r'^$',views.index,name="login"),
+    url(r'^post/',views.fpost,name="addfavorite"),
 ]
