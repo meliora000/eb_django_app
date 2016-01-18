@@ -116,7 +116,6 @@ a{
 	padding:10px;
 	border-radius:10px 10px 0 0;
 	overflow:hidden;
-	left:-320px;
 	}
 a{color:#FFF;}
 .title{color:#FFF; font-size:1.5em; font-weight:400}
@@ -135,6 +134,26 @@ a{color:#FFF;}
 	transition: transform 0.2s, opacity 0.2s;
 	-webkit-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 150px, 0);
+}
+
+#posting{
+	position:absolute;
+	width:320px;
+	height:173px;
+	bottom:0px;
+	left:0px;
+	background-color:#FFF;
+	opacity:.9;
+	/*display:none;*/
+}
+#posting textarea{
+	margin-left:10px;
+	margin-top:10px;
+	width:280px;
+	border-radius:10px;
+	font-size:1.1em;
+	padding:10px;
+
 }
 
 .menus:hover{

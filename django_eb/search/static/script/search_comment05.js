@@ -90,3 +90,28 @@ $.ajaxSetup({
         }
     }
 });
+var on = "http://joseph92.dothome.co.kr/img/coffeeheart_0.png"
+var off = "http://joseph92.dothome.co.kr/img/coffeeheart_1.png"
+
+
+
+$("div.score img.choice").click(function(){
+	var icon1=$(this).attr("src")
+	x = $(this).index();
+	a = $(this).parent().parent().find(".score img").toArray();
+
+	for(w=0; w<=4; w++){
+		a[w].src = off;
+		}
+
+		for(i=0; i<=x; i++){
+		a[i].src = on;
+		}
+	if($(this).parent().parent().find(".score b").text() =="3" && a==0 && icon1 ==on){
+		a[0].src = off;
+	}
+
+	x = x+1;
+	$(this).parent().parent().find(".score b").text(x+"");
+
+});
