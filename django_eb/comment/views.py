@@ -15,7 +15,7 @@ def post(request):
     print("POST COMMENT")
     myDict = dict(request.POST.iterlists())
     if(request.session['userid'] == 'none'):
-        return HttpResponse(json.dumps({'message':'Login First' }),content_type="application/json")
+        return HttpResponse(json.dumps({'status':'needlogin' }),content_type="application/json")
 
     userID =  request.session["userid"]
     coffeeID = myDict['coffeeid'][0].encode('utf-8')
@@ -35,8 +35,8 @@ def post(request):
 
     try:
         c = Commenta.objects.create(coffee = c,user = u, rate=tasterate, comment=commenta)
-        message = "Successfully Added"
+        message = "successfullyadded"
     except:
         message = "alreadyexist"
 
-    return HttpResponse(json.dumps({'message':message }),content_type="application/json")
+    return HttpResponse(json.dumps({'status':message,'userID':userID }),content_type="application/json")

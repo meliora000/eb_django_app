@@ -134,12 +134,23 @@ $('.postforma').submit(function(e){
 	coffeeid =$(this).parent().parent().find('.coffeeID').text();
 	tasterate = $(this).parent().find(".score b").text();
 	comment = $(this).find("textarea").val();
+	allcomment = $(this).parent().parent().find(".comment td")
 		$.ajax({
         url:'../comment/post/',
         type:'POST',
         data:{'comment':comment,'taste':tasterate,'coffeeid':coffeeid,'csrfmiddlewaretoken': csrftoken
         },
         success: function(response) {
+        	status = response.status
+        	if(status == "needlogin"){
+        		alert("로그인 먼저 하셔야 합니다")
+        	}
+        	if(status == "successfullyadded"){
+        		allcomment.append("<p class='useridclass'>" + response.userID + "</p>" + "<p class='commentclass'>"+comment+"</p>")
+        	}
+        	if(status == "alreadyexist"){
+        		alert("이미존재합니다.")
+        	}
 			hide();
             },
     });

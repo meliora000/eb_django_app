@@ -13,10 +13,9 @@ Simple! DJANGO, AWS
 <h3>future</h3>
 I got to deploy this great web application first, and then I will code for android and ios :)
 
-<h5>contact</h5>
+<h3>contact</h3>
 <strong>Email</strong> KOREA: Joseph_lee1@naver.com OTHER: meliora.i.h@gmail.com <br>
 <strong>Phone</strong> 82-10-8628-2398 <br>
 <strong>카톡</strong> EnjoyCoding <br>
 
-<h5>Developing Log</h5>
-<a href="https://docs.google.com/spreadsheets/d/10OCxMF4Ok_qBhNzt8jCnNgSe1ECFUPQlr6gap21cqNQ/edit#gid=0">log</a>
+<h5>Developing Log <a href="https://docs.google.com/spreadsheets/d/10OCxMF4Ok_qBhNzt8jCnNgSe1ECFUPQlr6gap21cqNQ/edit#gid=0">LOG :)</a></h5>

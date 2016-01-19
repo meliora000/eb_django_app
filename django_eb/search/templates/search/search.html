@@ -57,6 +57,7 @@
                                 	<p class="useridclass">{{j.userID}}</p>
                                     <p class="commentclass">{{j.comment}}</p>
                                 {% endfor %}
+                                </td>
                             </tr>
                         </table>
                         </div>
@@ -79,8 +80,9 @@
                                 <img src="http://joseph92.dothome.co.kr/img/coffeeheart_1.png" class="choice"><b>없음</b> &frasl; 5
                             </div>
                             <form class="postforma" method="post">
+                                {% csrf_token %}
                                 <textarea class=".textareacomment"></textarea>
-                                <input type="submit" value="등록">
+                                <input type="submit" value="등록" class="commentbutton">
                             </form>
                         </div>
 
@@ -115,7 +117,7 @@
 <script src="http://joseph92.dothome.co.kr/portfolio/script/jquery.js"  type="text/javascript"></script>
 <!--<script src="http://joseph92.dothome.co.kr/portfolio/script/search.js"  type="text/javascript"></script>-->
 <script src="{% static 'script/search04.js' %}"></script>
-<script src="{% static 'script/search_comment08.js' %}"></script>
+<script src="{% static 'script/search_comment09.js' %}"></script>
 <script src="{% static 'script/index_login_01.js' %}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAeVvTxCA083Jv1gQCvlGyC3nNLramjVU&signed_in=true&callback=initMap"
         async defer></script>
