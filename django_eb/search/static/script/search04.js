@@ -22,7 +22,8 @@ function nullanimate(){
 	}
 }
 $("button.e").click(function(){
-		$(this).parent().parent().parent().animate({"left" : -320 })
+		//$(this).parent().parent().parent().animate({"left" : -320 })
+		$(this).parent().parent().find('.posting').animate({"bottom":0})
 });
     $("button.b").click(function(){
     x = $(this).parent().parent().parent().parent().index();

@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <link href="http://fonts.googleapis.com/earlyaccess/nanumgothic.css" type="text/css" rel="stylesheet" >
-<link rel="stylesheet" type="text/css" href="{% static 'css/search_base10.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/search_base11.css' %}" />
 <title>SEARCH</title>
 </head>
 <body>
@@ -30,6 +30,7 @@
             </div>
             <div id="recommend">
 					{% for x in info %}
+
                     <div id="box">
                     <ul id ="lists">
                 	<li>
@@ -68,45 +69,25 @@
                             <button class="e"><img src="http://joseph92.dothome.co.kr/port/img/write.png"></button>
                         </div> <!--menus END-->
 
-                        <div id="posting">
+
+                        <div class="posting">
                             <div class="score">
                                 <img src="http://joseph92.dothome.co.kr/img/coffeeheart_1.png" class="choice">
                                 <img src="http://joseph92.dothome.co.kr/img/coffeeheart_1.png" class="choice">
                                 <img src="http://joseph92.dothome.co.kr/img/coffeeheart_1.png" class="choice">
                                 <img src="http://joseph92.dothome.co.kr/img/coffeeheart_1.png" class="choice">
-                                <img src="http://joseph92.dothome.co.kr/img/coffeeheart_1.png" class="choice"><b>0</b> &frasl; 5
+                                <img src="http://joseph92.dothome.co.kr/img/coffeeheart_1.png" class="choice"><b>없음</b> &frasl; 5
                             </div>
-                            <form>
-                                <textarea></textarea>
+                            <form class="postforma" method="post">
+                                <textarea class=".textareacomment"></textarea>
                                 <input type="submit" value="등록">
                             </form>
                         </div>
-                      
+
+
                 	</li>
                     <li class = "write">
 
-
-                    	<form action="" class="postform" method="post">
-                            {% csrf_token %}
-                            <div class="taste_box">
-                             </div>
-                            <div class="mood_box">                                           
-                            </div>
-                            <div class="price_box">
-                            </div>
-                            
-                            <div id="final_rate">
-                            	<h3 class="taste">맛</h3>
-                                <h3 class="mood">느낌</h3>
-                                <h3 class="price">가격</h3>
-                            </div>
-
-                            {{form2}}
-                            <input id="postcomment" type="submit" value="POST"/>
-                        </form>
-
-                        <!--"{% static 'img/left.png' %}"-->
-                        <button class="left"><img src="{% static 'img/left.png' %}"></button>
                     </li>
 				</ul>
                 </div>
@@ -133,8 +114,8 @@
 <!--<script src="{% static 'script/jquery.js' %}"  type="text/javascript"></script>-->
 <script src="http://joseph92.dothome.co.kr/portfolio/script/jquery.js"  type="text/javascript"></script>
 <!--<script src="http://joseph92.dothome.co.kr/portfolio/script/search.js"  type="text/javascript"></script>-->
-<script src="{% static 'script/search02.js' %}"></script>
-<script src="{% static 'script/search_comment05.js' %}"></script>
+<script src="{% static 'script/search04.js' %}"></script>
+<script src="{% static 'script/search_comment08.js' %}"></script>
 <script src="{% static 'script/index_login_01.js' %}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAeVvTxCA083Jv1gQCvlGyC3nNLramjVU&signed_in=true&callback=initMap"
         async defer></script>

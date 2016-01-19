@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 import json
+from users.models import USER
+from search.models import Object
+from models import Commenta
 
 # Create your views here.
 
@@ -11,10 +14,29 @@ def index(request):
 def post(request):
     print("POST COMMENT")
     myDict = dict(request.POST.iterlists())
-    print myDict['comment'][0].encode('utf-8')
-    print myDict['taste'][0].encode('utf-8')
-    print myDict['mood'][0].encode('utf-8')
-    print myDict['price'][0].encode('utf-8')
-    print myDict['coffeeid'][0].encode('utf-8')
+    if(request.session['userid'] == 'none'):
+        return HttpResponse(json.dumps({'message':'Login First' }),content_type="application/json")
 
-    return HttpResponse("POST POST")
+    userID =  request.session["userid"]
+    coffeeID = myDict['coffeeid'][0].encode('utf-8')
+    tasterate =  myDict['taste'][0].encode('utf-8')
+    try:
+        tasterate = int(tasterate)
+    except ValueError:
+        tasterate = 0
+    commenta = myDict['comment'][0].encode('utf-8')
+
+    #here will be collect comment and filter based on #tag
+
+
+
+    c = Object.objects.get(id = int(coffeeID))
+    u = USER.objects.get(userid = userID)
+
+    try:
+        c = Commenta.objects.create(coffee = c,user = u, rate=tasterate, comment=commenta)
+        message = "Successfully Added"
+    except:
+        message = "alreadyexist"
+
+    return HttpResponse(json.dumps({'message':message }),content_type="application/json")

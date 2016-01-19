@@ -16,3 +16,11 @@ class Comment(models.Model):
     class Meta:
         unique_together = ('coffee','user')
 
+class Commenta(models.Model):
+    coffee = models.ForeignKey(Object)
+    user = models.ForeignKey(USER)
+    rate = models.IntegerField()
+    comment = models.CharField(max_length=500,null=True)
+
+    class Meta:
+        unique_together = ('coffee','user')
