@@ -7,12 +7,12 @@
 </head>
 <body>
 <h1>sign up</h1>
-
+<h3 id="status">status</h3>
 <div id="signup">
                 <form action=""id="loginform" method="post">
                     {% csrf_token %}
                     {{ form }}
-                    <input type="submit" value="SUBMIT"/>
+                    <input type="submit" id="submitbutton" value="SUBMIT"/>
 
                 </form>
             <!--<h3 class="message">STATUS</h3>-->
@@ -20,4 +20,141 @@
 
         </div>
 </body>
+<script src="http://joseph92.dothome.co.kr/portfolio/script/jquery.js"  type="text/javascript"></script>
+<script>
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+
+var useridcheck = false
+var passwordcheck = false
+var name = true
+var phone = true
+var email = false
+
+
+/////CHECK ID/////////CHECK ID/////////CHECK ID/////////CHECK ID////
+$('#id_signup_id').on('keydown',function(e){
+	var keyCode = e.keyCode || e.which; 
+	if (keyCode == 9) { 
+    checkID()
+    // call custom function here
+  } 
+});
+
+$("#id_signup_password").click(function(){
+		//check if id is exist
+		checkID();
+	});
+	
+function checkID(){
+		user = $('#id_signup_id').val();
+		$.ajax({
+        url:'../check/',
+        type:'GET',
+        data:{"status":"useridcheck",'userid':user,'csrfmiddlewaretoken': csrftoken
+        },
+        success: function(response) {
+			$("#status").text(response.status)
+			if(response.status == "ID AVALIABLE"){
+					useridcheck = true
+			}
+            },
+    });	
+}
+/////CHECK ID/////////CHECK ID/////////CHECK ID/////////CHECK ID////
+	
+///CHECKPASSWORD//////CHECKPASSWORD//////CHECKPASSWORD///
+$('#id_signup_password_doubleCheck').on('keydown',function(e){
+	var keyCode = e.keyCode || e.which; 
+	if (keyCode == 9) { 
+    checkpassword()
+    // call custom function here
+  } 
+});
+$('#id_signup_name').on('click',function(){
+	checkpassword()
+});
+function checkpassword(){
+	pass1 = $('#id_signup_password').val();
+	pass2 = $('#id_signup_password_doubleCheck').val();
+	if(pass1 != pass2){
+		$("#status").text("Password is Different")
+	}
+	if(pass1 == pass2){
+		$("#status").text("Password is Correect")
+		passwordcheck = true;
+	}
+}
+///CHECKPASSWORD//////CHECKPASSWORD//////CHECKPASSWORD///
+
+
+///CHECKEMAIL//////CHECKEMAIL//////CHECKEMAIL//////CHECKEMAIL//////CHECKEMAIL//////CHECKEMAIL///
+$('#submitbutton').click(function(){
+		email = $('#id_signup_email').val();
+		$.ajax({
+        url:'../check/',
+        type:'GET',
+        data:{"status":"emailcheck",'email':email,'csrfmiddlewaretoken': csrftoken
+        },
+        success: function(response) {
+        	$("#status").text(response.status)
+			if(response.status){}
+            },
+    });	
+});
+	
+$('#id_signup_email').on('keydown',function(e){
+	var keyCode = e.keyCode || e.which; 
+	if (keyCode == 9)
+	 { 
+    checkemail()    
+ 	 } 
+	});
+
+
+
+function checkemail(){
+	email = $('#id_signup_email').val();
+		$.ajax({
+        url:'../check/',
+        type:'GET',
+        data:{"status":"emailcheck",'email':email,'csrfmiddlewaretoken': csrftoken
+        },
+        success: function(response) {
+        	$("#status").text(response.status)
+			if(response.status == "EMAIL AVALIABLE"){
+				email = false
+				}
+            },
+    });
+}
+</script>
 </html>

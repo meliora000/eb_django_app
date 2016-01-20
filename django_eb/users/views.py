@@ -15,9 +15,10 @@ def signUp(request):
         if form.is_valid():
             name = form.cleaned_data['signup_name']
             email = form.cleaned_data['signup_email']
-            id = form.cleaned_data['signup_id']
-            password = form.cleaned_data['signup_password']
-            str = name + "<>" + email + "<>" + id + "<>" + password + "<>"
+            userid = form.cleaned_data['signup_id']
+            psword = form.cleaned_data['signup_password']
+            dbpsword = form.cleaned_data['signup_password_doubleCheck']
+            USER.objects.create(name = name,userid= userid,userpassword=password)
             print str
 
     return render(request,"users/signup.html",{'form':form})
@@ -83,3 +84,30 @@ def logout(request):
     request.session['username'] = "none"
     request.session['userid'] = "none"
     return HttpResponse("LOGOUT")
+
+def check(request):
+    message = 'okay'
+    myDict = dict(request.GET.iterlists())
+    status = myDict["status"][0].encode('utf-8')
+    print type(status)
+    if(status == "useridcheck"):
+        userid = myDict["userid"][0].encode('utf-8')
+        try:
+            o = USER.objects.get(userid = userid)
+            message = "ID ALREADY EXIST"
+        except USER.DoesNotExist:
+            message = "ID AVALIABLE"
+        print userid
+
+    if(status == "emailcheck"):
+        email = myDict["email"][0].encode('utf-8')
+        try:
+            o = USER.objects.get(email = email)
+            message = "EMAIL ALREADY EXIST"
+        except USER.DoesNotExist:
+            message = "EMAIL AVALIABLE"
+        print email
+
+    if(status == "passwordcheck"):
+        print "passwordcheck"
+    return HttpResponse(json.dumps({'status':message}),content_type="application/json")
