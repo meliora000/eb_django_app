@@ -3,7 +3,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 import json
 from users.models import USER
 from search.models import Object
-from models import Commenta
+from models import Commenta,Hashtag
 
 # Create your views here.
 
@@ -34,9 +34,24 @@ def post(request):
     u = USER.objects.get(userid = userID)
 
     try:
-        c = Commenta.objects.create(coffee = c,user = u, rate=tasterate, comment=commenta)
+        #1. add on comment database
+        Commenta.objects.create(coffee = c,user = u, rate=tasterate, comment=commenta)
         message = "successfullyadded"
+        #2. add hash tag
+        #check if hash tag exist if not create new hastag
+        for i in commenta.split(" "):
+            if(i[0]=="#"):
+                try:
+                    Hashtag.objects.create(name=i,coffeeid=coffeeID)
+                except:
+                    obj = Hashtag.objects.get(name=i)
+                    obj.coffeeid = obj.coffeeid + "," + coffeeID
+                    obj.save()
+    #
     except:
+        cobj = Commenta.objects.get(coffee = c, user = u)
+        cobj.comment = commenta
+        cobj.save()
         message = "alreadyexist"
 
     return HttpResponse(json.dumps({'status':message,'userID':userID }),content_type="application/json")

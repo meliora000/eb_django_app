@@ -115,3 +115,17 @@ $("div.score img.choice").click(function(){
 	$(this).parent().parent().find(".score b").text(x+"");
 
 });
+
+$('.textareacomment').keyup(function(){
+	alert("workdiasdi");
+	$(this).parent().parent().find(".bg_hash").empty();
+	list = $(this).val().split(" ");
+	for(i=0;i<list.length;i++){
+		if(list[i].charAt(0) == "#"){
+			$(".bg_hash").append("<span class='highlight'>" + list[i] + "</span> ");
+		}
+		else{
+			$(".bg_hash").append(list[i]+" ");
+		}
+	}
+});

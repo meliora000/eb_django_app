@@ -21,10 +21,18 @@ function nullanimate(){
 		markers[i].setAnimation(null)
 	}
 }
-$("button.e").click(function(){
+$("button.e").click(function(e){
+        e.stopPropagation();
 		//$(this).parent().parent().parent().animate({"left" : -320 })
 		$(this).parent().parent().find('.posting').animate({"bottom":0})
 });
+
+$('html').click(function() {
+    $('.posting').animate({"bottom":-320});
+});
+$(".posting").click(function(e){
+   e.stopPropagation();
+})
     $("button.b").click(function(){
     x = $(this).parent().parent().parent().parent().index();
     latlng = $(this).parent().parent().find('.latlng').text().split(",")

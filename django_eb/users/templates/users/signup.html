@@ -9,7 +9,7 @@
 <h1>sign up</h1>
 <h3 id="status">status</h3>
 <div id="signup">
-                <form action=""id="loginform" method="post">
+                <form id="loginform" method="POST">
                     {% csrf_token %}
                     {{ form }}
                     <input type="submit" id="submitbutton" value="SUBMIT"/>
@@ -55,9 +55,18 @@ $.ajaxSetup({
 
 var useridcheck = false
 var passwordcheck = false
-var name = true
-var phone = true
-var email = false
+var namecheck = true
+var phonecheck = true
+var emailcheck = false
+
+$('html').click(function() {
+    if(!useridcheck){
+		if($('#id_signup_id').val().length>5){
+			$("#status").text("check id part")
+		}		
+	}
+});
+
 
 
 /////CHECK ID/////////CHECK ID/////////CHECK ID/////////CHECK ID////
@@ -76,6 +85,11 @@ $("#id_signup_password").click(function(){
 	
 function checkID(){
 		user = $('#id_signup_id').val();
+		if(user.length<5){
+			alert("length must be greater than 5")
+		}
+		else{
+		}
 		$.ajax({
         url:'../check/',
         type:'GET',
@@ -86,8 +100,12 @@ function checkID(){
 			if(response.status == "ID AVALIABLE"){
 					useridcheck = true
 			}
+			else{
+				useridcheck = false
+			}
             },
     });	
+		
 }
 /////CHECK ID/////////CHECK ID/////////CHECK ID/////////CHECK ID////
 	
@@ -138,7 +156,6 @@ $('#id_signup_email').on('keydown',function(e){
     checkemail()    
  	 } 
 	});
-
 
 
 function checkemail(){

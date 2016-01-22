@@ -1,6 +1,0 @@
-이요셉,aaa,1234,부평,01088888888,dldytpq234@gmail.com
-김창식,bbb,1234,서울,01088888888,dldytpq234@gmail.com
-이은호,ccc,1234,대구,01088888888,dldytpq234@gmail.com
-백승현,ddd,1234,부산,01088888888.dldytpq234@gmail.com
-방성관,eee,1234,전주,01088888888,dldytpq234@gmail.com
-진주만,fff,1234,제주,01088888888,dldytpq234@gmail.com

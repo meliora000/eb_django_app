@@ -17,9 +17,10 @@ def signUp(request):
             email = form.cleaned_data['signup_email']
             userid = form.cleaned_data['signup_id']
             psword = form.cleaned_data['signup_password']
+            p = form.cleaned_data['signup_phone']
             dbpsword = form.cleaned_data['signup_password_doubleCheck']
-            USER.objects.create(name = name,userid= userid,userpassword=password)
-            print str
+            USER.objects.create(name = name,userid= userid,userpassword=dbpsword,phone = p,email = email)
+            return HttpResponse("SIGNUP SUCCESS")
 
     return render(request,"users/signup.html",{'form':form})
 
@@ -39,11 +40,11 @@ def login(request):
         form = LoginFrom(request.POST)
         if form.is_valid():
             inputId = form.cleaned_data['login_id']
-            inputPass = int(form.cleaned_data['login_password'])
+            inputPass = str(form.cleaned_data['login_password'])
 
             try:
                 foo = USER.objects.get(userid = inputId)
-                userPass = int(foo.userpassword)
+                userPass = str(foo.userpassword)
 
                 if inputPass == userPass:
                     print 'login'

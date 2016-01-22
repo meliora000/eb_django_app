@@ -4,7 +4,7 @@ from django.template import loader,Context
 from .models import Object
 from .forms import LoginFrom,CommentForm
 import json
-from comment.models import Comment
+from comment.models import Comment,Commenta
 
 def index(request):
     if request.method == 'POST':
@@ -53,7 +53,7 @@ def search(request):
             data['daummap'] = "http://map.daum.net/link/to/" + "_".join(i.name.split(" ")) + "," + data['lat'] + "," + data['lng']
             data['coffeeId'] = str(i.id)
             data['comments'] = []
-            for j in Comment.objects.filter(coffee = coffeeid):
+            for j in Commenta.objects.filter(coffee = coffeeid).order_by("pub_date").reverse():
                 commentdata = {}
                 commentdata['userID'] = j.user_id
                 commentdata['comment'] = j.comment

@@ -22,11 +22,12 @@ tname = 'comment_commenta'
 
 #Insert Into comment_comment 4 randomUser 4 random Comment to each 1 ~ 1521 CoffeeShop
 
+c.execute("delete from " + tname)
 for coffeeid in range(1,1522):
     for userN in sample(xrange(8),4):
         userID = user[userN]
         commentIs = comment[random.randint(0,7)]
-        query = "INSERT INTO {0} VALUES (null,'{1}',{2},'{3}','{4}');".format(tname,randint(0,5),commentIs.decode('utf-8'),coffeeid,userID)
+        query = "INSERT INTO {0} VALUES (null,{1},'{2}','{3}','{4}');".format(tname,randint(0,5),commentIs.decode('utf-8'),coffeeid,userID)
         c.execute(query)
 
     if(coffeeid % 100 == 0):

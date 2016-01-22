@@ -146,7 +146,7 @@ $('.postforma').submit(function(e){
         		alert("로그인 먼저 하셔야 합니다")
         	}
         	if(status == "successfullyadded"){
-        		allcomment.append("<p class='useridclass'>" + response.userID + "</p>" + "<p class='commentclass'>"+comment+"</p>")
+        		allcomment.prepend("<p class='useridclass'>" + response.userID + "</p>" + "<p class='commentclass'>"+comment+"</p>")
         	}
         	if(status == "alreadyexist"){
         		alert("이미존재합니다.")
@@ -155,4 +155,47 @@ $('.postforma').submit(function(e){
             },
     });
 	e.preventDefault();
+})
+
+$('.textareacomment').keyup(function(){
+	ob = $(this).parent().parent().find(".bg_hash");
+	ob.empty();
+	list = $(this).val().split(" ");
+	for(i=0;i<list.length;i++){
+		if(list[i].charAt(0) == "#"){
+			ob.append("<span class='highlight'>" + list[i] + "</span> ");
+		}
+		else{
+			ob.append(list[i]+" ");
+		}
+	}
+});
+
+$('.textareacomment').keypress(function(e){
+	if(e.which == 13){
+	$(this).parent().parent().find(".bg_hash").append("<br>");
+	}
+})
+
+$('.comment').click(function(){
+	var hashdict = {}
+	$(this).find(".commentclass").each(function(){
+		list = $(this).text().split(" ");
+		for(i=0; i<list.length;i++){
+		//alert(list[i])
+		if(list[i].charAt(0) == "#"){
+			if(list[i] in hashdict){
+				hashdict[list[i]] = hashdict[list[i]] + 1
+			}
+			else{
+
+				hashdict[list[i]+""] = 1
+			}
+			}
+		}
+
+
+
+	})
+	alert(hashdict.keys())
 })

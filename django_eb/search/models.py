@@ -10,3 +10,4 @@ class Object(models.Model):
 
 class Obejct1(models.Model):
     name = models.CharField(max_length=200)
+
